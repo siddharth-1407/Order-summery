@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&display=swap');
+
+$mycolors : (
+    Pale-blue: hsl(225, 100%, 94%),
+    Bright-blue: hsl(245, 75%, 52%),
+    Very-pale-blue: hsl(225, 100%, 98%),
+    Desaturated-blue: hsl(224, 23%, 55%),
+    Dark-blue: hsl(223, 47%, 23%)
+);
+
+@mixin desktop {
+    @media (min-width:1000px){
+        @content;
+    }
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    // padding: 0 1em;
+    background-color: map-get($mycolors, Pale-blue );
+    background-image: url(./images/pattern-background-mobile.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    @include desktop{
+        background-image: url(./images/pattern-background-desktop.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+}
+
+.card{
+    max-width: 24.8125em;
+    width: min(calc(100% - 2em));
+    margin: auto;
+    border-radius: 1em;
+    overflow: hidden;
+    text-align: center;
+    background-color: map-get($mycolors, Very-pale-blue );
+    font-family: 'Red Hat Display', sans-serif;
+    .card_image{
+        img{
+            width: 100%;
+        }
+    }
+    .card_content{
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        padding: 1.5em 1.5em 1em 1.5em;
+    }
+}
+.card_content{
+    h1{
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: map-get($mycolors, Dark-blue );
+        @include desktop{
+            font-size: 1.7rem;
+        }
+    }
+    p{
+        font-size: 1rem;
+        font-weight: 500;
+        color: map-get($mycolors, Desaturated-blue );
+        padding: 0 1em;
+        line-height: 1.6;
+    }
+    .card_plan{
+        margin-top: 0.5em;
+        padding: 1em;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 0.5em;
+        background-color: #f8f9fe;
+        align-items: center;
+        text-align: start;
+    .left{
+      display: flex;
+      img{
+      margin-right: 1em;
+        }
+        h2{
+            font-weight: 700;
+            color: map-get($mycolors, Dark-blue);
+            font-size: 1.1rem;
+        }
+        p{
+            font-weight: 500;
+            padding: 0;
+            font-size: 1rem;
+        }
+    }
+    a{
+        right: 0;
+        font-weight: 700;
+        color:map-get($mycolors, Bright-blue );
+    };
+    a:hover{
+         text-decoration: none;
+         color: hsla(245, 75%, 52%, 0.8);
+    }     
+    }
+
+    button{
+        padding: 1em;
+        font-size: 1.05rem;
+        font-family: 'Red Hat Display', sans-serif;
+        font-weight: 700;
+        border: none;
+        border-radius: 0.7rem;
+        cursor: pointer;
+    }
+    .card_proceedBtn{
+        background-color: map-get($mycolors, Bright-blue );
+        color: map-get($mycolors, Very-pale-blue );
+        box-shadow: 0 10px 20px  hsla(245, 75%, 52%, 0.4);
+    }
+    .card_proceedBtn:hover{
+    background-color: hsla(245, 75%, 52%, 0.8);
+    }
+    .card_cancelBtn{
+        padding: 0;
+        margin-top: 0.8em;
+        margin-bottom: 0.8em;
+        // background-color: black;
+        background-color: map-get($mycolors, Very-pale-blue );
+        color: map-get($mycolors, Desaturated-blue);
+    }
+    .card_cancelBtn:hover{
+        color: map-get($mycolors, Dark-blue );
+    }
+
+}
+
+
+
+
+
+footer{
+    position: absolute;
+    bottom: 0;
+}
